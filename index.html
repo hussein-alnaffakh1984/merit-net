@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MERIT-Net | Maternal Health Risk Predictor</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-content">
+    <div class="logo">
+      <span class="logo-icon">🩺</span>
+      <span class="logo-text">MERIT-Net</span>
+    </div>
+    <a href="https://github.com/hussein-alnaffakh1984/merit-net" target="_blank" rel="noopener" class="github-btn" id="github-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      <span>View on GitHub</span>
+    </a>
+  </div>
+</header>
+
+<main class="container">
+  
+  <section class="hero">
+    <h1>Maternal Health Risk Predictor</h1>
+    <p class="subtitle">Enter clinical measurements to assess maternal risk level</p>
+  </section>
+
+  <section class="app-section">
+    <form id="predict-form" class="form-grid">
+      
+      <div class="form-section">
+        <h3>Vital Signs</h3>
+        <div class="input-group">
+          <label for="age">Age <span class="unit">(years)</span></label>
+          <input type="number" id="age" min="10" max="70" step="1" value="30" required>
+        </div>
+        <div class="input-group">
+          <label for="sbp">Systolic BP <span class="unit">(mmHg)</span></label>
+          <input type="number" id="sbp" min="60" max="250" step="1" value="120" required>
+        </div>
+        <div class="input-group">
+          <label for="dbp">Diastolic BP <span class="unit">(mmHg)</span></label>
+          <input type="number" id="dbp" min="30" max="160" step="1" value="80" required>
+        </div>
+        <div class="input-group">
+          <label for="bs">Blood Sugar <span class="unit">(mmol/L)</span></label>
+          <input type="number" id="bs" min="2" max="25" step="0.1" value="6.5" required>
+        </div>
+        <div class="input-group">
+          <label for="temp">Body Temperature <span class="unit">(°F)</span></label>
+          <input type="number" id="temp" min="95" max="105" step="0.1" value="98.6" required>
+        </div>
+        <div class="input-group">
+          <label for="bmi">BMI <span class="unit">(kg/m²)</span></label>
+          <input type="number" id="bmi" min="10" max="50" step="0.1" value="24.5" required>
+        </div>
+        <div class="input-group">
+          <label for="hr">Heart Rate <span class="unit">(bpm)</span></label>
+          <input type="number" id="hr" min="40" max="150" step="1" value="76" required>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3>Clinical History</h3>
+        <div class="input-group">
+          <label for="prev">Previous Complications</label>
+          <select id="prev" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="pre_diab">Pre-existing Diabetes</label>
+          <select id="pre_diab" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="gest_diab">Gestational Diabetes</label>
+          <select id="gest_diab" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="mental">Mental Health Issues</label>
+          <select id="mental" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="predict-btn">
+          <span>🔍 Predict Risk Level</span>
+        </button>
+        <button type="button" id="reset-btn" class="reset-btn">↺ Reset</button>
+      </div>
+    </form>
+
+    <div id="result" class="result hidden">
+      <div class="result-card">
+        <h2 class="result-title">Prediction Result</h2>
+        
+        <div id="risk-badge" class="risk-badge">
+          <span id="risk-label">—</span>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric">
+            <div class="metric-label">Risk Probability</div>
+            <div class="metric-value" id="risk-prob">—</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Trust Score</div>
+            <div class="metric-value" id="trust-score">—</div>
+          </div>
+        </div>
+
+        <div class="trust-bar-container">
+          <div class="trust-bar-label">
+            <span>Trust Level</span>
+            <span id="trust-pct">—</span>
+          </div>
+          <div class="trust-bar">
+            <div id="trust-fill" class="trust-fill"></div>
+          </div>
+        </div>
+
+        <div id="recommendation" class="recommendation">—</div>
+
+        <div class="disclaimer">
+          ⚠️ <strong>Research tool only.</strong> All predictions must be interpreted by qualified healthcare professionals within the full clinical context.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>MERIT-Net — For research purposes only</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
