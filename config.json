@@ -1,0 +1,24 @@
+{
+  "random_seed": 42,
+  "cross_validation": {"scheme": "StratifiedKFold", "n_splits": 10, "shuffle": true, "random_state": 42},
+  "holdout": {"scheme": "stratified", "test_size": 0.20, "random_state": 42},
+  "cost_sensitive": {"high_to_low_ratio": "5:1"},
+  "preprocessing": {"order": ["StandardScaler", "SMOTE-ENN", "PCA"], "pca_variance": 0.95, "fit_on": "training_folds_only"},
+  "ensemble_members": {
+    "RandomForest": {"n_estimators": 300, "random_state": 42},
+    "XGBoost": {"n_estimators": 300, "max_depth": 6, "learning_rate": 0.1, "random_state": 42},
+    "CatBoost": {"random_state": 42},
+    "LightGBM": {"random_state": 42},
+    "ExtraTrees": {"n_estimators": 300, "random_state": 42}
+  },
+  "trust_score": {
+    "formula": "T(x) = (wA*A(x) + wC*C(x) + wV*V(x)) * 100",
+    "heuristic_weights": {"A": 0.4, "C": 0.4, "V": 0.2},
+    "data_driven_weights": {"A": 0.31, "C": 0.45, "V": 0.25},
+    "decision_threshold_youden_J": 93
+  },
+  "baselines": {
+    "Jamel2024": {"pca_variance": 0.95, "voting": "soft", "members": ["GradientBoosting", "MLP[64,32]"]},
+    "Sarker2025": {"preprocessing": ["SMOTE-ENN(default)", "PCA(0.95)"], "classifier": "XGBoost"}
+  }
+}
