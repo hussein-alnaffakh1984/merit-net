@@ -1,24 +1,20 @@
 {
   "random_seed": 42,
+  "python": "3.10",
+  "library_versions": {"numpy": "1.24", "scikit-learn": "1.3", "xgboost": "2.0", "catboost": "1.2", "lightgbm": "4.0"},
   "cross_validation": {"scheme": "StratifiedKFold", "n_splits": 10, "shuffle": true, "random_state": 42},
-  "holdout": {"scheme": "stratified", "test_size": 0.20, "random_state": 42},
-  "cost_sensitive": {"high_to_low_ratio": "5:1"},
-  "preprocessing": {"order": ["StandardScaler", "SMOTE-ENN", "PCA"], "pca_variance": 0.95, "fit_on": "training_folds_only"},
-  "ensemble_members": {
-    "RandomForest": {"n_estimators": 300, "random_state": 42},
-    "XGBoost": {"n_estimators": 300, "max_depth": 6, "learning_rate": 0.1, "random_state": 42},
-    "CatBoost": {"random_state": 42},
-    "LightGBM": {"random_state": 42},
-    "ExtraTrees": {"n_estimators": 300, "random_state": 42}
+  "holdout": {"scheme": "stratified train_test_split", "test_size": 0.20, "random_state": 42, "n_train": 931, "n_test": 233},
+  "ensemble": {
+    "voting": "uniform soft voting (mean of five probability vectors)",
+    "cost_weighting_high_to_low": "5:1",
+    "members": {
+      "RandomForest": {"n_estimators": 500, "max_depth": 20, "random_state": 42, "class_weight": {"0": 1.0, "1": 5.0}},
+      "XGBoost": {"n_estimators": 500, "max_depth": 10, "learning_rate": 0.05, "scale_pos_weight": 5, "random_state": 42},
+      "CatBoost": {"iterations": 500, "depth": 12, "learning_rate": 0.05, "class_weights": [1.0, 5.0], "random_state": 42},
+      "LightGBM": {"n_estimators": 500, "max_depth": 10, "learning_rate": 0.05, "class_weight": {"0": 1.0, "1": 5.0}, "random_state": 42},
+      "ExtraTrees": {"n_estimators": 500, "max_depth": 20, "class_weight": {"0": 1.0, "1": 5.0}, "random_state": 42}
+    }
   },
-  "trust_score": {
-    "formula": "T(x) = (wA*A(x) + wC*C(x) + wV*V(x)) * 100",
-    "heuristic_weights": {"A": 0.4, "C": 0.4, "V": 0.2},
-    "data_driven_weights": {"A": 0.31, "C": 0.45, "V": 0.25},
-    "decision_threshold_youden_J": 93
-  },
-  "baselines": {
-    "Jamel2024": {"pca_variance": 0.95, "voting": "soft", "members": ["GradientBoosting", "MLP[64,32]"]},
-    "Sarker2025": {"preprocessing": ["SMOTE-ENN(default)", "PCA(0.95)"], "classifier": "XGBoost"}
-  }
+  "trust_score": {"heuristic_weights": {"A": 0.4, "C": 0.4, "V": 0.2}, "data_driven_weights": {"A": 0.31, "C": 0.45, "V": 0.25}},
+  "conformal_prediction": {"method": "split-conformal (marginal)", "alpha": 0.05, "calibration_n": 582, "test_n": 582, "source": "pooled out-of-fold 10-fold CV predictions (n=1164)"}
 }
