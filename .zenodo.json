@@ -1,0 +1,26 @@
+{
+  "title": "MERIT-Net (code)",
+  "upload_type": "software",
+  "access_right": "open",
+  "description": "<p>Source code and reproducibility materials accompanying the article: MERIT-Net: A Confidence-aware Ensemble Pipeline for Maternal Health Risk Prediction with Cost-sensitive Classification. <em>International Journal of Intelligent Engineering and Systems</em>, 2026. https://doi.org/10.22266/ijies2026.0831.64</p><p>If you use this software, please cite the article.</p>",
+  "creators": [
+    {
+      "name": "Al-Naffakh, Hussein Ali Hussein",
+      "affiliation": "University of Alkafeel, Najaf, Iraq",
+      "orcid": "0000-0002-4775-8818"
+    },
+    {
+      "name": "Radhi, Ahmed Dheyaa"
+    },
+    {
+      "name": "Reishaan, Muntaha Abdullah"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.22266/ijies2026.0831.64",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ]
+}
