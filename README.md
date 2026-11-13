@@ -1,5 +1,7 @@
 # MERIT-Net
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24208716.svg)](https://doi.org/10.5281/zenodo.24208716)
+
 Confidence-aware ensemble pipeline for maternal health risk prediction with cost-sensitive classification.
 
 - **Paper:** *International Journal of Intelligent Engineering and Systems*, 19(8), 1231–1247 (2026). https://doi.org/10.22266/ijies2026.0831.64
