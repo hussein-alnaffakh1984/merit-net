@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the published paper below."
+title: "MERIT-Net (code)"
+type: software
+authors:
+  - family-names: "Al-Naffakh"
+    given-names: "Hussein Ali Hussein"
+    orcid: "https://orcid.org/0000-0002-4775-8818"
+  - family-names: "Radhi"
+    given-names: "Ahmed Dheyaa"
+  - family-names: "Reishaan"
+    given-names: "Muntaha Abdullah"
+repository-code: "https://github.com/hussein-alnaffakh1984/merit-net"
+preferred-citation:
+  type: article
+  title: "MERIT-Net: A Confidence-aware Ensemble Pipeline for Maternal Health Risk Prediction with Cost-sensitive Classification"
+  authors:
+    - family-names: "Al-Naffakh"
+      given-names: "Hussein Ali Hussein"
+      orcid: "https://orcid.org/0000-0002-4775-8818"
+    - family-names: "Radhi"
+      given-names: "Ahmed Dheyaa"
+    - family-names: "Reishaan"
+      given-names: "Muntaha Abdullah"
+  journal: "International Journal of Intelligent Engineering and Systems"
+  year: 2026
+  volume: 19
+  issue: 8
+  start: 1231
+  end: 1247
+  doi: "10.22266/ijies2026.0831.64"
