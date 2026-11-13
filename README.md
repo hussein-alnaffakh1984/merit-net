@@ -2,7 +2,7 @@
 
 Confidence-aware ensemble pipeline for maternal health risk prediction with cost-sensitive classification.
 
-- **Paper:** International Journal of Intelligent Engineering and Systems (IJIES) — under review.
+- **Paper:** *International Journal of Intelligent Engineering and Systems*, 19(8), 1231–1247 (2026). https://doi.org/10.22266/ijies2026.0831.64
 - **Dataset:** Mendeley Maternal Health Risk Assessment (DOI: 10.17632/p5w98dvbbk.1).
 - **Live demo:** https://meritnet-iraq.netlify.app (predictions computed client-side from `model.json`).
 
@@ -62,6 +62,25 @@ Independent holdout (n = 233): 99.14% accuracy, 100% high-risk recall (zero fals
 Five-model uniform soft-voting ensemble with 5:1 cost weighting:
 Random Forest (500, depth 20), XGBoost (500, depth 10, lr 0.05), CatBoost (500, depth 12, lr 0.05),
 LightGBM (500, depth 10, lr 0.05), Extra Trees (500, depth 20).
+
+## Citation
+
+If you use this code or its results, please cite the published paper:
+
+> Al-Naffakh, H.A.H., Radhi, A.D., & Reishaan, M.A. (2026). MERIT-Net: A Confidence-aware Ensemble Pipeline for Maternal Health Risk Prediction with Cost-sensitive Classification. *International Journal of Intelligent Engineering and Systems*, 19(8), 1231–1247. https://doi.org/10.22266/ijies2026.0831.64
+
+```bibtex
+@article{AlNaffakh2026MERITNet,
+  title   = {MERIT-Net: A Confidence-aware Ensemble Pipeline for Maternal Health Risk Prediction with Cost-sensitive Classification},
+  author  = {Al-Naffakh, Hussein Ali Hussein and Radhi, Ahmed Dheyaa and Reishaan, Muntaha Abdullah},
+  journal = {International Journal of Intelligent Engineering and Systems},
+  year    = {2026},
+  volume  = {19},
+  number  = {8},
+  pages   = {1231--1247},
+  doi     = {10.22266/ijies2026.0831.64}
+}
+```
 
 ## Authors
 
